@@ -1,0 +1,10 @@
+* {
+    font-family: 'Jost';
+    box-sizing: border-box;
+}
+
+html,body {
+    margin: 0;
+    font-family: 'Jost';
+    background-color: #f5f5f5;
+}
