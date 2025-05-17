@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "../css/header.css";
 import "../css/cover.css";
 import Navbar from "./Navbar";
@@ -11,6 +11,34 @@ function Header() {
   const [jobDescription, setJobDescription] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const coverLetterRef = useRef(null);
+  const [showBanner, setShowBanner] = useState(true);
+
+  // Banner style
+  const bannerStyle = {
+    backgroundColor: "black",
+    color: "white",
+    padding: "10px",
+    textAlign: "center",
+    width: "100%",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    zIndex: 1000,
+    fontWeight: "bold",
+    display: showBanner ? "block" : "none"
+  };
+
+  const closeBannerStyle = {
+    color: "white",
+    float: "right",
+    cursor: "pointer",
+    marginRight: "20px"
+  };
+
+  // Function to close banner
+  const closeBanner = () => {
+    setShowBanner(false);
+  };
 
   async function getCover() {
     try {
@@ -50,6 +78,12 @@ function Header() {
 
   return (
     <>
+      <div style={bannerStyle}>
+        <span style={closeBannerStyle} onClick={closeBanner}>
+          &times;
+        </span>
+        <p>NOTICE: Too broke to purchase more tokens to run the site :(</p>
+      </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
